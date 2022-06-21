@@ -3,15 +3,12 @@ import React from "react";
 class BillAppClass extends React.Component {
 
   state = {
-    amountValue: '',
+    amountValue: 0,
+    vat: 20,
+    amountValueWithVat: '',
     tipValue: '',
-    amount: ''
-  }
-
-  constructor(props) {
-    super(props);
-    this.amountValueHandler = this.amountValueHandler.bind(this);
-    this.tipValueHandler = this.tipValueHandler.bind(this);
+    amount: '',
+    clicked: false
   }
 
   amountValueHandler = (event) => {
@@ -19,7 +16,6 @@ class BillAppClass extends React.Component {
     this.setState({
       amountValue: currentAmountValue
     })
-    console.log('Netto amount', currentAmountValue);
   }
 
 
@@ -29,23 +25,36 @@ class BillAppClass extends React.Component {
     this.setState({
       tipValue: chooseTipValue
     })
-    console.log('Tip amount', chooseTipValue);
   }
 
 
   countAmount = () => {
-    let sum = this.state.amountValue + (this.state.amountValue * this.state.tipValue / 100);
+    const sumWithTip = this.state.amountValue + (this.state.amountValue * this.state.tipValue / 100);
+    const sumWithVat = parseFloat(this.state.amountValue) + (parseFloat(this.state.amountValue) * parseFloat(this.state.vat)) / 100;
 
     this.setState({
-      amount: sum + ' euro to pay'
+      amount: sumWithTip + ' euro to pay',
+      amountValueWithVat: sumWithVat,
+      clicked: !this.state.clicked
     })
-    console.log(sum);
   }
 
   render() {
     const styles = {
       display: 'block',
       margin: '10px auto'
+    }
+
+    if (this.state.clicked) {
+      return (
+        <div>
+          <h1>
+            BillAppClass
+          </h1>
+          <p>Amount to pay with tip: {this.state.amount}</p>
+          <p>Amount to pay with VAT: {this.state.amountValueWithVat}</p>
+        </div>
+      )
     }
 
     return (
@@ -64,7 +73,6 @@ class BillAppClass extends React.Component {
           </select>
           <button type='button' onClick={this.countAmount}>Count amount</button>
         </form>
-        <p>Amount to pay with tip: {this.state.amount}</p>
       </div>
     )
   }

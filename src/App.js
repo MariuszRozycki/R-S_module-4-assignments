@@ -4,7 +4,7 @@ import BillAppClass from './BillApp/BillAppClass';
 function App() {
   return (
     <div className="App">
-      <BillAppClass />
+      <BillAppClass clicked />
     </div>
   );
 }
