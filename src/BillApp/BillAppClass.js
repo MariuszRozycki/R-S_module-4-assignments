@@ -5,38 +5,38 @@ class BillAppClass extends React.Component {
   state = {
     amountValue: 0,
     vat: 20,
-    amountValueWithVat: '',
     tipValue: '',
     amount: '',
     clicked: false
   }
 
   amountValueHandler = (event) => {
-    const currentAmountValue = parseFloat(event.target.value);
+    const currentAmountValue = parseFloat(event.target.value) + (parseFloat(event.target.value) * parseFloat(this.state.vat) / 100);
     this.setState({
-      amountValue: currentAmountValue
+      amountValue: currentAmountValue + ' euro to pay',
     })
+    console.log('currentAmountValue', currentAmountValue);
   }
 
 
   tipValueHandler = (event) => {
     const chooseTipValue = parseFloat(event.target.value);
-
+    console.log('chooseTipValue', chooseTipValue);
     this.setState({
-      tipValue: chooseTipValue
+      tipValue: chooseTipValue + '%',
     })
+    console.log('chooseTipValue', chooseTipValue);
+    console.log('chooseTipValue', typeof chooseTipValue);
   }
 
-
   countAmount = () => {
-    const sumWithTip = this.state.amountValue + (this.state.amountValue * this.state.tipValue / 100);
-    const sumWithVat = parseFloat(this.state.amountValue) + (parseFloat(this.state.amountValue) * parseFloat(this.state.vat)) / 100;
+    const sumWithTip = parseFloat(this.state.amountValue) + (parseFloat(this.state.amountValue) * parseFloat(this.state.tipValue) / 100);
 
     this.setState({
       amount: sumWithTip + ' euro to pay',
-      amountValueWithVat: sumWithVat,
       clicked: !this.state.clicked
     })
+    console.log('sumWithTip', sumWithTip);
   }
 
   render() {
@@ -45,14 +45,28 @@ class BillAppClass extends React.Component {
       margin: '10px auto'
     }
 
+
     if (this.state.clicked) {
+      console.log(typeof this.state.tipValue);
+      console.log(this.state.tipValue);
       return (
         <div>
           <h1>
             BillAppClass
           </h1>
-          <p>Amount to pay with tip: {this.state.amount}</p>
-          <p>Amount to pay with VAT: {this.state.amountValueWithVat}</p>
+          <p>Amount to pay without tip: {this.state.amountValue}</p>
+          <p>Amount to pay with tip {this.state.tipValue}: {this.state.amount}</p>
+        </div>
+      )
+    }
+    // Jak uruchomic ponizszy warunek? 
+    if (!this.state.tipValue && this.state.clicked) {
+      console.log('this.state.tipValue', this.state.tipValue);
+      return (
+        <div>
+          <h1>BillAppClass</h1>
+          <p>You are @$$hole! Didn't give any tip!: {this.state.amountValue}</p>
+          <p>Amount to pay without tip: {this.state.amountValue}</p>
         </div>
       )
     }
@@ -65,7 +79,8 @@ class BillAppClass extends React.Component {
         <form>
           <input style={styles} placeholder='Enter amount' type="number" onChange={this.amountValueHandler} />
           <select style={styles} name="tip" id="tip" onChange={this.tipValueHandler}>
-            <option value=' '>Choose tip value</option>
+            <option>Choose tip value</option>
+            <option value="0">0%</option>
             <option value="5">5%</option>
             <option value="10">10%</option>
             <option value="15">15%</option>
