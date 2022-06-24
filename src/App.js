@@ -1,10 +1,12 @@
 import './App.css';
 import BillAppClass from './BillApp/BillAppClass';
+import BillAppFunctional from './BillApp/BillAppFunctional';
 
 function App() {
   return (
     <div className="App">
-      <BillAppClass clicked />
+      <BillAppClass />
+      <BillAppFunctional clicked vat={20} />
     </div>
   );
 }
