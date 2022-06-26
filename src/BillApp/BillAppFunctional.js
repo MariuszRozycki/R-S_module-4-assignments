@@ -43,8 +43,8 @@ function BillAppFunctional({ clicked, vat }) {
         <h1>
           BillAppClassFunctional
         </h1>
-        <p>Amount to pay without tip: {sumWithVat}</p>
-        <p>Amount to pay with tip: {sumVatAndTip}</p>
+        <p>Amount to pay without tip: {sumWithVat} euro to pay</p>
+        <p>Amount to pay with tip: {sumVatAndTip} euro to pay</p>
       </div>
     )
   }

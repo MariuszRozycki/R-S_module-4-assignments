@@ -23,7 +23,7 @@ class BillAppClass extends React.Component {
     const chooseTipValue = parseFloat(event.target.value);
     console.log('chooseTipValue', chooseTipValue);
     this.setState({
-      tipValue: chooseTipValue + '%',
+      tipValue: chooseTipValue + '%'
     })
     console.log('chooseTipValue', chooseTipValue);
     console.log('chooseTipValue', typeof chooseTipValue);
@@ -60,8 +60,8 @@ class BillAppClass extends React.Component {
       )
     }
     // Jak uruchomic ponizszy warunek? 
-    if (!this.state.tipValue && this.state.clicked) {
-      console.log('this.state.tipValue', this.state.tipValue);
+    if (this.state.tipValue === '0%' && this.state.clicked) {
+
       return (
         <div>
           <h1>BillAppClass</h1>
