@@ -65,7 +65,7 @@ class BillAppClass extends React.Component {
       return (
         <div>
           <h1>BillAppClass</h1>
-          <p>You are @$$hole! Didn't give any tip!: {this.state.amountValue}</p>
+          <p>You are @$$hole! Didn't give any tip!</p>
           <p>Amount to pay without tip: {this.state.amountValue}</p>
         </div>
       )
