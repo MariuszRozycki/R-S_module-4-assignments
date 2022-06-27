@@ -6,6 +6,8 @@ function FormValidation() {
   const [nameInput, setNameInput] = useState('');
   const [emailInput, setEmailInput] = useState('');
   const [bioInput, setBioInput] = useState('');
+  const [buttonValue, setButtonValue] = useState(false);
+  console.log(buttonValue);
 
   const nameInputErr = useRef();
   const nameError = useRef();
@@ -63,6 +65,22 @@ function FormValidation() {
       bioAreaErr.current.style.border = '1px solid black';
       bioError.current.style.display = 'none';
     }
+
+    if ((!nameInput.trim().length < 5) && (checkEmail(emailInput)) && (!bioInput.trim().length < 11)) {
+      setButtonValue(true);
+
+    }
+  }
+
+
+
+  if (buttonValue) {
+    return (
+      <div className="success">
+        <h1>FormValidation</h1>
+        <p >Your message is sent!</p>
+      </div>
+    )
   }
 
 

@@ -7,17 +7,10 @@ const styles = {
 
 
 function BillAppFunctional({ clicked, vat }) {
-
   const [amount, setAmount] = useState(' ');
-
   const [tipValue, setTipValue] = useState(' ');
-  console.log(tipValue);
-
   const [valueClicked, setValueClicked] = useState(clicked);
-
   const [sumWithVat, setSumWithVat] = useState('');
-  console.log('sumWithVat', sumWithVat);
-
 
   const handleAmount = (event) => {
     setAmount(parseFloat(event.target.value));
@@ -31,11 +24,8 @@ function BillAppFunctional({ clicked, vat }) {
 
   const handleCountAmount = () => {
     setSumWithVat(amount + (amount * vat / 100));
-    console.log((sumWithVat));
-
     setValueClicked(!valueClicked);
   }
-
 
   if (!valueClicked) {
     return (
@@ -48,8 +38,6 @@ function BillAppFunctional({ clicked, vat }) {
       </div>
     )
   }
-
-
 
   return (
     <div>
