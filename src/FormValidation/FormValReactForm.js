@@ -12,14 +12,13 @@ function ReactFormValidation() {
 
   const refErrNoAt = useRef();
   const [emailInput, setEmailInput] = useState();
+  const [flag, setFlag] = useState(false);
 
   const emailHandler = (event) => {
     setEmailInput(event.target.value)
   }
 
   const handleData = (data) => {
-    console.log('data', data);
-    console.log('data email', data.userEmail);
     if (!emailInput.includes('@')) {
       console.error(`Mail address doesn't include @ - symbol`);
       refErrNoAt.current.style.display = 'block';
@@ -27,6 +26,19 @@ function ReactFormValidation() {
       refErrNoAt.current.style.display = 'none';
       console.log('Correct e-mail')
     }
+
+    if (data && emailInput.includes('@')) {
+      setFlag(true);
+    }
+  }
+
+  if (flag) {
+    return (
+      <div className="success">
+        <h1>ReactFormVal</h1>
+        <p >Your message is sent!</p>
+      </div>
+    )
   }
 
   return (

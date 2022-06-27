@@ -65,7 +65,8 @@
   margin: 20px;
   padding: 20px;
   font-size: 22px;
-  border: 2px solid green;
+  color: green;
+  border: 5px solid green;
 }
 
 .error-no-at,
