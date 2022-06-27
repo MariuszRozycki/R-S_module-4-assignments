@@ -24,7 +24,6 @@ function ReactFormValidation() {
       refErrNoAt.current.style.display = 'block';
     } else {
       refErrNoAt.current.style.display = 'none';
-      console.log('Correct e-mail')
     }
 
     if (data && emailInput.includes('@')) {
