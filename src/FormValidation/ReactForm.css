@@ -48,3 +48,11 @@ input[type="radio"] {
 .invalid {
   border: 2px solid red;
 }
+
+.success {
+  margin: 20px;
+  padding: 20px;
+  font-size: 16px;
+  color: green;
+  border: 5px solid green;
+}

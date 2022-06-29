@@ -1,20 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import './ReactForm.css';
 
 function ReactForm() {
   const { register, handleSubmit, formState: { errors } } = useForm();
-
+  let flag = false;
   console.log('errors', errors);
   console.log('errors', errors.firstName?.ref);
 
+  const [submit, setSubmit] = useState(false);
+  console.log(submit);
+
+
   const onSubmit = (data) => {
     console.log(data);
+    setSubmit(true);
   }
 
 
 
+  if (submit) {
+    return (
+      <fieldset className="success">
+        <h1 className="form-sent">Your form in component ReactForm is sent!</h1>
+      </fieldset>
+    )
+  }
 
   return (
     <fieldset className="form-wrapper">
