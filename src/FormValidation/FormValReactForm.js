@@ -1,3 +1,4 @@
+// Nie wiedzialem jak zrobic bordery na pustych inputach, ale piszac komponent ReactForm znalazlem odpowiednie tutoriale i doszedlem do tego
 import React, { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 
@@ -32,7 +33,6 @@ function ReactFormValidation() {
     setRadioWoman(true);
   }
 
-  // Nie moge uzyc w useForm, useRef w taki sam sposob, jak w kodzie bez useForm. Kiedy wstawie {...register("name")}, to nie moge uzywac ref-ow na tych elementach. Nie moge tez uzyc wlasciwosci length na elemencie z {...register("")} Z powodu useForm nie moge zrobic takiej validacji jaka chce, tak jak w komponencie FormValidation.
   const handleRadio = () => {
     if (radioMan || radioWoman) {
       console.log('radioMan || radioWoman', radioMan || radioWoman);
