@@ -4,6 +4,8 @@ import BillAppFunctional from './BillApp/BillAppFunctional';
 import FormValidation from './FormValidation/FormValidation';
 import ReactFormValidation from './FormValidation/FormValReactForm';
 import ReactForm from './FormValidation/ReactForm';
+import ExpensesCalculator from './ExpensesCalculator/ExpensesCalculator';
+
 
 function App() {
   return (
@@ -13,6 +15,7 @@ function App() {
       <FormValidation />
       <ReactFormValidation />
       <ReactForm />
+      <ExpensesCalculator />
     </div>
   );
 }

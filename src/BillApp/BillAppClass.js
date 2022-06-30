@@ -1,5 +1,7 @@
 import React from "react";
 
+import './BillApp.css';
+
 class BillAppClass extends React.Component {
 
   state = {
@@ -50,7 +52,7 @@ class BillAppClass extends React.Component {
       console.log(typeof this.state.tipValue);
       console.log(this.state.tipValue);
       return (
-        <div>
+        <div className='BillApp'>
           <h1>
             BillAppClass
           </h1>
@@ -63,7 +65,7 @@ class BillAppClass extends React.Component {
     if (this.state.tipValue === '0%' && this.state.clicked) {
 
       return (
-        <div>
+        <div className='BillApp'>
           <h1>BillAppClass</h1>
           <p>You are @$$hole! Didn't give any tip!</p>
           <p>Amount to pay without tip: {this.state.amountValue}</p>
@@ -72,7 +74,7 @@ class BillAppClass extends React.Component {
     }
 
     return (
-      <div>
+      <div className='BillApp'>
         <h1>
           BillAppClass
         </h1>

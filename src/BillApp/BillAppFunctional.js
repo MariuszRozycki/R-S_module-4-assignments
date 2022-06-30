@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import './BillApp.css'
+
 const styles = {
   display: 'block',
   margin: '10px auto'
@@ -29,7 +31,7 @@ function BillAppFunctional({ clicked, vat }) {
 
   if (!valueClicked) {
     return (
-      <div>
+      <div className='BillApp'>
         <h1>
           BillAppClassFunctional
         </h1>
@@ -40,7 +42,7 @@ function BillAppFunctional({ clicked, vat }) {
   }
 
   return (
-    <div>
+    <div className='BillApp'>
       <h1>
         BillAppFunctional
       </h1>
