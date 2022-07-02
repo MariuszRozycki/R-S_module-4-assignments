@@ -30,7 +30,6 @@ function ExpensesCalculator() {
     event.preventDefault();
 
     if (radioIncome) {
-      console.log('Pierwszy');
       listIncomeRef.current.innerHTML += `<li>${nameOfValue}</li>`;
     }
 
