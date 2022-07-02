@@ -56,7 +56,7 @@ function ExpensesCalculator() {
   }
 
   const removeItemHandler = () => {
-    itemRef.current.innerHTML = "X"
+
   }
 
 
