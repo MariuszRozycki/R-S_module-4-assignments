@@ -5,11 +5,13 @@ import "./ExpensesCalculator.css";
 
 function ExpensesCalculator() {
   const [nameOfValue, setNameOfValue] = useState();
+  console.log('nameOfValue:', nameOfValue);
   const [radioIncome, setRadioIncome] = useState(false);
   const [radioExpenses, setRadioExpenses] = useState(false);
 
   const listIncomeRef = useRef();
   const listExpensesRef = useRef();
+  const itemRef = useRef();
   console.log(nameOfValue);
 
   const nameOfValueHandler = (event) => {
@@ -29,13 +31,32 @@ function ExpensesCalculator() {
   const listHandler = (event) => {
     event.preventDefault();
 
+    if (!nameOfValue) {
+      return null;
+    }
+
     if (radioIncome) {
-      listIncomeRef.current.innerHTML += `<li>${nameOfValue}</li>`;
+      listIncomeRef.current.innerHTML += `<li ref={itemRef}>${nameOfValue}</li>
+                                          <button 
+                                            className="remove-button" 
+                                            onClick=${removeItemHandler}>
+                                            X
+                                            </button>`;
     }
 
     if (radioExpenses) {
-      listExpensesRef.current.innerHTML += `<li>${nameOfValue}</li>`;
+      listExpensesRef.current.innerHTML += `<li ref={itemRef}>${nameOfValue}</li>
+                                              <button 
+                                              className="remove-button" 
+                                              onClick=${removeItemHandler}>
+                                              X
+                                              </button>`;
     }
+
+  }
+
+  const removeItemHandler = () => {
+    itemRef.current.innerHTML = "X"
   }
 
 
