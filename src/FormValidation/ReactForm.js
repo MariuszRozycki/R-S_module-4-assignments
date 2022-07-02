@@ -5,7 +5,7 @@ import './ReactForm.css';
 
 function ReactForm() {
   const { register, handleSubmit, formState: { errors } } = useForm();
-  let flag = false;
+
   console.log('errors', errors);
   console.log('errors', errors.firstName?.ref);
 
