@@ -1,21 +1,31 @@
 import React, { useState, useRef } from "react";
+
 import Select from "./components/Select";
+import ListItem from "./components/ListItem";
 
 import "./ExpensesCalculator.css";
 
 function ExpensesCalculator() {
-  const [nameOfValue, setNameOfValue] = useState();
-  console.log('nameOfValue:', nameOfValue);
+  const [nameOfValue, setNameOfValue] = useState("");
+  const [incomeList, setIncomeList] = useState([]);
+  const [expensesList, setExpensesList] = useState([]);
   const [radioIncome, setRadioIncome] = useState(false);
   const [radioExpenses, setRadioExpenses] = useState(false);
+  const [amountValue, setAmountValue] = useState();
+  console.log(amountValue);
 
   const listIncomeRef = useRef();
   const listExpensesRef = useRef();
-  const itemRef = useRef();
-  console.log(nameOfValue);
+  const listHandlerButton = useRef();
+
+
 
   const nameOfValueHandler = (event) => {
     setNameOfValue(event.target.value)
+  }
+
+  const amountValueHandler = (e) => {
+    setAmountValue(e.target.value);
   }
 
   const radioIncomeHandler = () => {
@@ -32,32 +42,35 @@ function ExpensesCalculator() {
     event.preventDefault();
 
     if (!nameOfValue) {
+      console.log("Pusty string");
       return null;
     }
 
     if (radioIncome) {
-      listIncomeRef.current.innerHTML += `<li ref={itemRef}>${nameOfValue}</li>
-                                          <button 
-                                            className="remove-button" 
-                                            onClick=${removeItemHandler}>
-                                            X
-                                            </button>`;
+      setIncomeList([
+        ...incomeList,
+        {
+          text: nameOfValue,
+          id: Math.floor(Math.random() * 1000),
+          value: amountValue
+        }
+      ])
+
     }
 
     if (radioExpenses) {
-      listExpensesRef.current.innerHTML += `<li ref={itemRef}>${nameOfValue}</li>
-                                              <button 
-                                              className="remove-button" 
-                                              onClick=${removeItemHandler}>
-                                              X
-                                              </button>`;
+      setExpensesList([
+        ...expensesList,
+        {
+          text: nameOfValue,
+          id: Math.floor(Math.random() * 1000),
+          value: amountValue
+        }
+      ])
     }
-
+    setNameOfValue("");
   }
 
-  const removeItemHandler = () => {
-
-  }
 
 
   return (
@@ -66,11 +79,29 @@ function ExpensesCalculator() {
       <div className="wrapper--all-lists">
         <div className="wrapper-list">
           <h2>Income</h2>
-          <ul ref={listIncomeRef} className="list-income"></ul>
+          <ol ref={listIncomeRef} className="list-income">
+            {incomeList.map((el, index) => <ListItem
+              key={index}
+              textItem={el.text}
+              idItem={el.id}
+              incomeList={incomeList}
+              setIncomeList={setIncomeList}
+              value={el.value}
+            />)}
+          </ol>
         </div>
         <div className="wrapper-list">
           <h2>Expenses</h2>
-          <ul ref={listExpensesRef} className="list-expenses"></ul>
+          <ol ref={listExpensesRef} className="list-expenses">
+            {expensesList.map((el, index) => <ListItem
+              key={index}
+              textItem={el.text}
+              idItem={el.id}
+              expensesList={expensesList}
+              setExpensesList={setExpensesList}
+              value={el.value}
+            />)}
+          </ol>
         </div>
       </div>
       <form className="form-wrapper">
@@ -86,12 +117,13 @@ function ExpensesCalculator() {
           <input
             name="name-of-value"
             type="text"
+            value={nameOfValue}
             onChange={nameOfValueHandler}
           />
         </label>
-        <button onClick={listHandler}>Add</button>
+        <button ref={listHandlerButton} onClick={listHandler}>Add</button>
         <label htmlFor="amount">Amount:
-          <input name="amount" type="number" />
+          <input name="amount" type="number" onChange={amountValueHandler} />
         </label>
         <label htmlFor="">Choose category:
           <Select />

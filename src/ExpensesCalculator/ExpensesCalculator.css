@@ -30,3 +30,14 @@ input,
 select {
   margin-left: 5px;
 }
+
+
+.list-item {
+  text-align: left;
+}
+
+.list-item div,
+.list-item button {
+  display: inline;
+  margin-right: 5px;
+}
