@@ -1,6 +1,7 @@
 import React from "react";
 
 function ListItem({ textItem, idItem, value, incomeList, setIncomeList, expensesList, setExpensesList }) {
+  console.log("incomeList", incomeList);
   const removeHandler = () => {
     if (incomeList) {
       setIncomeList(incomeList.filter(el => {

@@ -1,10 +1,10 @@
 import React from "react";
 
-function SumExpenses({ sumExpenses }) {
+function SumExpenses({ expensesList }) {
   const addSumEl = () => {
     let sum = 0;
-    for (let i = 0; i < sumExpenses.length; i++) {
-      sum += sumExpenses[i].sum
+    for (let i = 0; i < expensesList.length; i++) {
+      sum += expensesList[i].value
     }
     return sum;
   }
