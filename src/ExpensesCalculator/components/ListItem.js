@@ -2,7 +2,6 @@ import React from "react";
 
 function ListItem({ textItem, idItem, value, incomeList, setIncomeList, expensesList, setExpensesList }) {
   const removeHandler = () => {
-    console.log("dziala");
     if (incomeList) {
       setIncomeList(incomeList.filter(el => {
         console.log("el.id", el.id);
@@ -22,7 +21,7 @@ function ListItem({ textItem, idItem, value, incomeList, setIncomeList, expenses
     <>
       <li className="list-item">
         <div>{textItem}</div>
-        <div>{value}</div>
+        <div>{value} euro</div>
         <button className="remove-button" onClick={removeHandler}>X</button>
       </li>
     </>

@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 
 import Select from "./components/Select";
 import ListItem from "./components/ListItem";
+import SumIncome from "./components/SumIncome";
 
 import "./ExpensesCalculator.css";
 
@@ -12,20 +13,20 @@ function ExpensesCalculator() {
   const [radioIncome, setRadioIncome] = useState(false);
   const [radioExpenses, setRadioExpenses] = useState(false);
   const [amountValue, setAmountValue] = useState();
-  console.log(amountValue);
+  console.log("Type of amountValue", amountValue);
+  const [sumIncome, setSumIncome] = useState([]);
+  console.log("sum Income", sumIncome);
 
   const listIncomeRef = useRef();
   const listExpensesRef = useRef();
   const listHandlerButton = useRef();
-
-
 
   const nameOfValueHandler = (event) => {
     setNameOfValue(event.target.value)
   }
 
   const amountValueHandler = (e) => {
-    setAmountValue(e.target.value);
+    setAmountValue(parseFloat(e.target.value));
   }
 
   const radioIncomeHandler = () => {
@@ -42,7 +43,6 @@ function ExpensesCalculator() {
     event.preventDefault();
 
     if (!nameOfValue) {
-      console.log("Pusty string");
       return null;
     }
 
@@ -51,8 +51,8 @@ function ExpensesCalculator() {
         ...incomeList,
         {
           text: nameOfValue,
-          id: Math.floor(Math.random() * 1000),
-          value: amountValue
+          id: Math.random() * 1000,
+          value: parseFloat(amountValue)
         }
       ])
 
@@ -63,11 +63,20 @@ function ExpensesCalculator() {
         ...expensesList,
         {
           text: nameOfValue,
-          id: Math.floor(Math.random() * 1000),
-          value: amountValue
+          id: Math.random() * 1000,
+          value: parseFloat(amountValue)
         }
       ])
     }
+
+    setSumIncome([
+      ...sumIncome,
+      {
+        sum: amountValue,
+        id: Math.random() * 1000,
+      }
+    ]);
+
     setNameOfValue("");
   }
 
@@ -89,7 +98,12 @@ function ExpensesCalculator() {
               value={el.value}
             />)}
           </ol>
+          <SumIncome
+            amountValue={amountValue}
+            sumIncome={sumIncome}
+            setSumIncome={setSumIncome} />
         </div>
+
         <div className="wrapper-list">
           <h2>Expenses</h2>
           <ol ref={listExpensesRef} className="list-expenses">
@@ -102,6 +116,7 @@ function ExpensesCalculator() {
               value={el.value}
             />)}
           </ol>
+          <p className="sum-expenses">Sum expenses: </p>
         </div>
       </div>
       <form className="form-wrapper">
