@@ -32,9 +32,7 @@ select {
 }
 
 
-.list-item,
-.sum-income,
-.sum-expenses {
+.list-item {
   text-align: left;
 }
 
