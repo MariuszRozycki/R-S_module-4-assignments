@@ -4,6 +4,7 @@ import Select from "./components/Select";
 import ListItem from "./components/ListItem";
 import SumIncome from "./components/SumIncome";
 import SumExpenses from "./components/SumExpenses";
+import Balance from "./components/Balance";
 
 import "./ExpensesCalculator.css";
 
@@ -68,8 +69,6 @@ function ExpensesCalculator() {
     setNameOfValue("");
   }
 
-
-
   return (
     <div>
       <h1>ExpensesCalculator</h1>
@@ -90,7 +89,6 @@ function ExpensesCalculator() {
             incomeList={incomeList}
           />
         </div>
-
         <div className="wrapper-list">
           <h2>Expenses</h2>
           <ol ref={listExpensesRef} className="list-expenses">
@@ -108,6 +106,10 @@ function ExpensesCalculator() {
           />
         </div>
       </div>
+      <Balance
+        incomeList={incomeList}
+        expensesList={expensesList}
+      />
       <form className="form-wrapper">
         <div className="radio-wrapper">
           <label className="radio-label" htmlFor="income">Income:
