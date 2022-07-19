@@ -14,8 +14,6 @@ function ExpensesCalculator() {
   const [radioIncome, setRadioIncome] = useState(false);
   const [radioExpenses, setRadioExpenses] = useState(false);
   const [amountValue, setAmountValue] = useState();
-  // const [sumIncome, setSumIncome] = useState([]);
-  // const [sumExpenses, setSumExpenses] = useState([]);
 
   const listIncomeRef = useRef();
   const listExpensesRef = useRef();
@@ -55,13 +53,6 @@ function ExpensesCalculator() {
           value: parseFloat(amountValue)
         }
       ]);
-      // setSumIncome([
-      //   ...sumIncome,
-      //   {
-      //     sum: incomeList,
-      //     id: Math.random() * 1000,
-      //   }
-      // ]);
     }
 
     if (radioExpenses) {
@@ -73,13 +64,6 @@ function ExpensesCalculator() {
           value: parseFloat(amountValue)
         }
       ]);
-      // setSumExpenses([
-      //   ...sumExpenses,
-      //   {
-      //     sum: amountValue,
-      //     id: Math.random() * 1000
-      //   }
-      // ]);
     }
     setNameOfValue("");
   }
@@ -104,7 +88,6 @@ function ExpensesCalculator() {
           </ol>
           <SumIncome
             incomeList={incomeList}
-          // sumIncome={sumIncome}
           />
         </div>
 
