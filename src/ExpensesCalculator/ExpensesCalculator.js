@@ -3,6 +3,7 @@ import React, { useState, useRef } from "react";
 import Select from "./components/Select";
 import ListItem from "./components/ListItem";
 import SumIncome from "./components/SumIncome";
+import SumExpenses from "./components/SumExpenses";
 
 import "./ExpensesCalculator.css";
 
@@ -13,9 +14,8 @@ function ExpensesCalculator() {
   const [radioIncome, setRadioIncome] = useState(false);
   const [radioExpenses, setRadioExpenses] = useState(false);
   const [amountValue, setAmountValue] = useState();
-  console.log("Type of amountValue", amountValue);
   const [sumIncome, setSumIncome] = useState([]);
-  console.log("sum Income", sumIncome);
+  const [sumExpenses, setSumExpenses] = useState([]);
 
   const listIncomeRef = useRef();
   const listExpensesRef = useRef();
@@ -54,8 +54,14 @@ function ExpensesCalculator() {
           id: Math.random() * 1000,
           value: parseFloat(amountValue)
         }
-      ])
-
+      ]);
+      setSumIncome([
+        ...sumIncome,
+        {
+          sum: amountValue,
+          id: Math.random() * 1000,
+        }
+      ]);
     }
 
     if (radioExpenses) {
@@ -66,17 +72,15 @@ function ExpensesCalculator() {
           id: Math.random() * 1000,
           value: parseFloat(amountValue)
         }
-      ])
+      ]);
+      setSumExpenses([
+        ...sumExpenses,
+        {
+          sum: amountValue,
+          id: Math.random() * 1000
+        }
+      ]);
     }
-
-    setSumIncome([
-      ...sumIncome,
-      {
-        sum: amountValue,
-        id: Math.random() * 1000,
-      }
-    ]);
-
     setNameOfValue("");
   }
 
@@ -99,9 +103,8 @@ function ExpensesCalculator() {
             />)}
           </ol>
           <SumIncome
-            amountValue={amountValue}
             sumIncome={sumIncome}
-            setSumIncome={setSumIncome} />
+          />
         </div>
 
         <div className="wrapper-list">
@@ -116,7 +119,9 @@ function ExpensesCalculator() {
               value={el.value}
             />)}
           </ol>
-          <p className="sum-expenses">Sum expenses: </p>
+          <SumExpenses
+            sumExpenses={sumExpenses}
+          />
         </div>
       </div>
       <form className="form-wrapper">

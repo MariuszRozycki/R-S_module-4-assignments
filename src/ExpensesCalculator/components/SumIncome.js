@@ -1,8 +1,7 @@
 import React from "react";
 
-function SumIncome({ sumIncome, amountValue }) {
-  console.log("sumIncome", sumIncome);
-  console.log("Amount value", amountValue);
+function SumIncome({ sumIncome }) {
+
   const addSumEl = () => {
     let sum = 0;
     for (let i = 0; i < sumIncome.length; i++) {
