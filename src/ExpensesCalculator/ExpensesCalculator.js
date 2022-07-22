@@ -15,6 +15,7 @@ function ExpensesCalculator() {
   const [radioIncome, setRadioIncome] = useState(false);
   const [radioExpenses, setRadioExpenses] = useState(false);
   const [amountValue, setAmountValue] = useState();
+  const [categoryValue, setCategoryValue] = useState("");
 
   const listIncomeRef = useRef();
   const listExpensesRef = useRef();
@@ -38,10 +39,14 @@ function ExpensesCalculator() {
     setRadioIncome(false);
   }
 
+  const categoryValueHandler = (e) => {
+    setCategoryValue(e.target.value)
+  }
+
   const listHandler = (event) => {
     event.preventDefault();
 
-    if (!nameOfValue) {
+    if (!nameOfValue || !amountValue) {
       return null;
     }
 
@@ -51,7 +56,8 @@ function ExpensesCalculator() {
         {
           text: nameOfValue,
           id: Math.random() * 1000,
-          value: parseFloat(amountValue)
+          value: parseFloat(amountValue),
+          category: categoryValue
         }
       ]);
     }
@@ -62,7 +68,8 @@ function ExpensesCalculator() {
         {
           text: nameOfValue,
           id: Math.random() * 1000,
-          value: parseFloat(amountValue)
+          value: parseFloat(amountValue),
+          category: categoryValue
         }
       ]);
     }
@@ -83,6 +90,7 @@ function ExpensesCalculator() {
               incomeList={incomeList}
               setIncomeList={setIncomeList}
               value={el.value}
+              category={el.category}
             />)}
           </ol>
           <SumIncome
@@ -127,13 +135,16 @@ function ExpensesCalculator() {
             onChange={nameOfValueHandler}
           />
         </label>
-        <button ref={listHandlerButton} onClick={listHandler}>Add</button>
         <label htmlFor="amount">Amount:
           <input name="amount" type="number" onChange={amountValueHandler} />
+        </label>
+        <label htmlFor="category">Category:
+          <input name="category" type="text" onChange={categoryValueHandler} />
         </label>
         <label htmlFor="">Choose category:
           <Select />
         </label>
+        <button ref={listHandlerButton} onClick={listHandler}>Add</button>
       </form>
     </div>
   )

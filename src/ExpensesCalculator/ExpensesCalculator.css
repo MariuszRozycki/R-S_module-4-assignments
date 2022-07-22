@@ -34,10 +34,10 @@ select {
 
 .list-item {
   text-align: left;
+  margin-bottom: 20px;
 }
 
 .list-item div,
 .list-item button {
-  display: inline;
-  margin-right: 5px;
+  margin: 3px 0;
 }
