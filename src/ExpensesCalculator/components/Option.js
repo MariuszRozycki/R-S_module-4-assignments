@@ -1,10 +1,13 @@
 import React from "react";
+import removeDuplicates from "../Utils/removeDuplicates";
 
-function Option({ value }) {
+function Option({ category }) {
+  console.log(category);
+
   return (
     <>
-      <option value={value}>
-        {value[0].toUpperCase() + value.slice(1)}
+      <option value={category}>
+        {category[0].toUpperCase() + category.slice(1)}
       </option>
     </>
   )

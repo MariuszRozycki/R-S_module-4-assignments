@@ -7,6 +7,7 @@ import SumExpenses from "./components/SumExpenses";
 import Balance from "./components/Balance";
 
 import "./ExpensesCalculator.css";
+// import removeDuplicates from "./Utils/removeDuplicates";
 
 function ExpensesCalculator() {
   const [nameOfValue, setNameOfValue] = useState("");
@@ -15,7 +16,8 @@ function ExpensesCalculator() {
   const [radioIncome, setRadioIncome] = useState(false);
   const [radioExpenses, setRadioExpenses] = useState(false);
   const [amountValue, setAmountValue] = useState();
-  const [categoryValue, setCategoryValue] = useState("");
+  const [categoryValue, setCategoryValue] = useState("All category");
+  console.log(incomeList);
 
   const listIncomeRef = useRef();
   const listExpensesRef = useRef();
@@ -40,7 +42,7 @@ function ExpensesCalculator() {
   }
 
   const categoryValueHandler = (e) => {
-    setCategoryValue(e.target.value)
+    setCategoryValue(e.target.value);
   }
 
   const listHandler = (event) => {
@@ -57,7 +59,8 @@ function ExpensesCalculator() {
           text: nameOfValue,
           id: Math.random() * 1000,
           value: parseFloat(amountValue),
-          category: categoryValue
+          category: categoryValue,
+          defaultCategory: categoryValue
         }
       ]);
     }
@@ -69,7 +72,8 @@ function ExpensesCalculator() {
           text: nameOfValue,
           id: Math.random() * 1000,
           value: parseFloat(amountValue),
-          category: categoryValue
+          category: categoryValue,
+          defaultCategory: categoryValue
         }
       ]);
     }
@@ -91,6 +95,7 @@ function ExpensesCalculator() {
               setIncomeList={setIncomeList}
               value={el.value}
               category={el.category}
+              radioIncome={radioIncome}
             />)}
           </ol>
           <SumIncome
@@ -107,6 +112,8 @@ function ExpensesCalculator() {
               expensesList={expensesList}
               setExpensesList={setExpensesList}
               value={el.value}
+              category={el.category}
+              radioExpenses={radioExpenses}
             />)}
           </ol>
           <SumExpenses
@@ -142,7 +149,14 @@ function ExpensesCalculator() {
           <input name="category" type="text" onChange={categoryValueHandler} />
         </label>
         <label htmlFor="">Choose category:
-          <Select />
+          <Select
+            radioIncome={radioIncome}
+            incomeList={incomeList}
+          />
+          <Select
+            radioExpenses={radioExpenses}
+            expensesList={expensesList}
+          />
         </label>
         <button ref={listHandlerButton} onClick={listHandler}>Add</button>
       </form>
