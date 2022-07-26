@@ -21,7 +21,7 @@ function Balance({ incomeList, expensesList }) {
 
   return (
     <>
-      <div>Balance: {balance()} euro</div>
+      <div className={balance() > 0 ? "balance-plus" : "balance-minus"}>Balance: {balance()} euro</div>
     </>
   )
 }

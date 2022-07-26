@@ -10,11 +10,21 @@ function SumIncome({ incomeList }) {
   }
   addSumEl();
 
-  return (
-    <>
-      <p className="sum-income">Sum income: {addSumEl()} euro</p>
-    </>
-  )
+  if (addSumEl() > 0) {
+    return (
+      <>
+        <p className="sum-income balance-plus" >Sum income: {addSumEl()} euro</p>
+      </>
+    )
+  }
+
+  else {
+    return (
+      <>
+        <p className="sum-income balance-minus" >Sum income: {addSumEl()} euro</p>
+      </>
+    )
+  }
 }
 
 export default SumIncome;

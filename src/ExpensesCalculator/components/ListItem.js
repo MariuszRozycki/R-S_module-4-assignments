@@ -8,8 +8,8 @@ function ListItem({ textItem,
   expensesList,
   setExpensesList,
   category,
-  radioIncome,
-  radioExpenses }) {
+  date }) {
+  console.log(value);
   const categoryToUpperFirstCase = category[0].toUpperCase() + category.slice(1);
 
   const removeHandler = () => {
@@ -25,31 +25,18 @@ function ListItem({ textItem,
     }
   };
 
-  if (radioIncome) {
-    return (
-      <>
-        <li className="list-item">
-          <div>Income: {textItem}</div>
-          <div>Value: {value} euro</div>
-          <div>Category: {categoryToUpperFirstCase}</div>
-          <button className="remove-button" onClick={removeHandler}>Delete X</button>
-        </li>
-      </>
-    )
-  }
+  return (
+    <>
+      <li className="list-item">
+        <div>Date: {date}</div>
+        <div>Text value: {textItem}</div>
+        <div>Value: {value} euro</div>
+        <div>Category: {categoryToUpperFirstCase}</div>
+        <button className="remove-button" onClick={removeHandler}>Delete X</button>
+      </li>
+    </>
+  )
 
-  if (radioExpenses) {
-    return (
-      <>
-        <li className="list-item">
-          <div>Expenses: {textItem}</div>
-          <div>Value: {value} euro</div>
-          <div>Category: {categoryToUpperFirstCase}</div>
-          <button className="remove-button" onClick={removeHandler}>Delete X</button>
-        </li>
-      </>
-    )
-  }
 }
 
 export default ListItem;

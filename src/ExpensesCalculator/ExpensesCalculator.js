@@ -16,19 +16,20 @@ function ExpensesCalculator() {
   const [radioIncome, setRadioIncome] = useState(false);
   const [radioExpenses, setRadioExpenses] = useState(false);
   const [amountValue, setAmountValue] = useState();
+  console.log("amountValue", typeof amountValue);
   const [categoryValue, setCategoryValue] = useState("All category");
-  console.log(incomeList);
+  const date = new Date().toLocaleDateString();
 
   const listIncomeRef = useRef();
   const listExpensesRef = useRef();
   const listHandlerButton = useRef();
 
   const nameOfValueHandler = (event) => {
-    setNameOfValue(event.target.value)
+    setNameOfValue(event.target.value);
   }
 
   const amountValueHandler = (e) => {
-    setAmountValue(parseFloat(e.target.value));
+    setAmountValue(Number(e.target.value));
   }
 
   const radioIncomeHandler = () => {
@@ -59,8 +60,7 @@ function ExpensesCalculator() {
           text: nameOfValue,
           id: Math.random() * 1000,
           value: parseFloat(amountValue),
-          category: categoryValue,
-          defaultCategory: categoryValue
+          category: categoryValue
         }
       ]);
     }
@@ -72,12 +72,12 @@ function ExpensesCalculator() {
           text: nameOfValue,
           id: Math.random() * 1000,
           value: parseFloat(amountValue),
-          category: categoryValue,
-          defaultCategory: categoryValue
+          category: categoryValue
         }
       ]);
     }
     setNameOfValue("");
+    setAmountValue();
   }
 
   return (
@@ -96,6 +96,7 @@ function ExpensesCalculator() {
               value={el.value}
               category={el.category}
               radioIncome={radioIncome}
+              date={date}
             />)}
           </ol>
           <SumIncome
@@ -114,6 +115,7 @@ function ExpensesCalculator() {
               value={el.value}
               category={el.category}
               radioExpenses={radioExpenses}
+              date={date}
             />)}
           </ol>
           <SumExpenses
@@ -143,7 +145,13 @@ function ExpensesCalculator() {
           />
         </label>
         <label htmlFor="amount">Amount:
-          <input name="amount" type="number" onChange={amountValueHandler} />
+          <input
+            name="amount"
+            id="amount"
+            type="number"
+            autoComplete="off"
+            onChange={amountValueHandler}
+          />
         </label>
         <label htmlFor="category">Category:
           <input name="category" type="text" onChange={categoryValueHandler} />
@@ -152,8 +160,6 @@ function ExpensesCalculator() {
           <Select
             radioIncome={radioIncome}
             incomeList={incomeList}
-          />
-          <Select
             radioExpenses={radioExpenses}
             expensesList={expensesList}
           />

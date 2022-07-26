@@ -9,11 +9,20 @@ function SumExpenses({ expensesList }) {
     return sum;
   }
 
-  return (
-    <>
-      <p className="sum-expenses">Sum expenses: {addSumEl()} euro</p>
-    </>
-  )
+  if (addSumEl() > 0) {
+    return (
+      <>
+        <p className="sum-expenses balance-minus">Sum expenses: {addSumEl()} euro</p>
+      </>
+    )
+  }
+  else {
+    return (
+      <>
+        <p className="sum-expenses balance-plus">Sum expenses: {addSumEl()} euro</p>
+      </>
+    )
+  }
 }
 
 export default SumExpenses;

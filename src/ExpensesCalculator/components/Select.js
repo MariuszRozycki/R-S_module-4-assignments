@@ -1,7 +1,6 @@
 import React from "react";
 
 import Option from "./Option";
-import removeDuplicates from "../Utils/removeDuplicates";
 
 function Select({ radioIncome, incomeList, radioExpenses, expensesList }) {
 

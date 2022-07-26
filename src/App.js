@@ -10,11 +10,11 @@ import ExpensesCalculator from './ExpensesCalculator/ExpensesCalculator';
 function App() {
   return (
     <div className="App">
-      {/* <BillAppClass />
-      <BillAppFunctional clicked vat={20} />
-      <FormValidation />
-      <ReactFormValidation />
-      <ReactForm /> */}
+      {/* <BillAppClass /> */}
+      {/* <BillAppFunctional clicked vat={20} /> */}
+      {/* <FormValidation /> */}
+      {/* <ReactFormValidation /> */}
+      {/* <ReactForm /> */}
       <ExpensesCalculator />
     </div>
   );
