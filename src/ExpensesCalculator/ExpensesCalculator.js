@@ -15,8 +15,8 @@ function ExpensesCalculator() {
   const [expensesList, setExpensesList] = useState([]);
   const [radioIncome, setRadioIncome] = useState(false);
   const [radioExpenses, setRadioExpenses] = useState(false);
-  const [amountValue, setAmountValue] = useState();
-  console.log("amountValue", typeof amountValue);
+  const [amountValue, setAmountValue] = useState("");
+  console.log("amountValue", amountValue);
   const [categoryValue, setCategoryValue] = useState("All category");
   const date = new Date().toLocaleDateString();
 
@@ -29,7 +29,7 @@ function ExpensesCalculator() {
   }
 
   const amountValueHandler = (e) => {
-    setAmountValue(Number(e.target.value));
+    setAmountValue(parseInt(e.target.value));
   }
 
   const radioIncomeHandler = () => {
@@ -77,7 +77,7 @@ function ExpensesCalculator() {
       ]);
     }
     setNameOfValue("");
-    setAmountValue();
+    setAmountValue("");
   }
 
   return (
@@ -151,6 +151,7 @@ function ExpensesCalculator() {
             type="number"
             autoComplete="off"
             onChange={amountValueHandler}
+            value={amountValue}
           />
         </label>
         <label htmlFor="category">Category:
