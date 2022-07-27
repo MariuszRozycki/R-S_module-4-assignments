@@ -5,8 +5,9 @@ import ListItem from "./components/ListItem";
 import SumIncome from "./components/SumIncome";
 import SumExpenses from "./components/SumExpenses";
 import Balance from "./components/Balance";
-
+import option from "./Utils/options";
 import "./ExpensesCalculator.css";
+import Category from "./components/Category";
 // import removeDuplicates from "./Utils/removeDuplicates";
 
 function ExpensesCalculator() {
@@ -16,8 +17,8 @@ function ExpensesCalculator() {
   const [radioIncome, setRadioIncome] = useState(false);
   const [radioExpenses, setRadioExpenses] = useState(false);
   const [amountValue, setAmountValue] = useState("");
-  console.log("amountValue", amountValue);
-  const [categoryValue, setCategoryValue] = useState("All category");
+  const [categoryValue, setCategoryValue] = useState();
+  console.log(categoryValue);
   const date = new Date().toLocaleDateString();
 
   const listIncomeRef = useRef();
@@ -43,6 +44,7 @@ function ExpensesCalculator() {
   }
 
   const categoryValueHandler = (e) => {
+    console.log("Category is choose!", e.target.value);
     setCategoryValue(e.target.value);
   }
 
@@ -78,6 +80,7 @@ function ExpensesCalculator() {
     }
     setNameOfValue("");
     setAmountValue("");
+    // setCategoryValue("");
   }
 
   return (
@@ -116,6 +119,7 @@ function ExpensesCalculator() {
               category={el.category}
               radioExpenses={radioExpenses}
               date={date}
+              setCategoryValue={setCategoryValue}
             />)}
           </ol>
           <SumExpenses
@@ -130,10 +134,18 @@ function ExpensesCalculator() {
       <form className="form-wrapper">
         <div className="radio-wrapper">
           <label className="radio-label" htmlFor="income">Income:
-            <input name="option" id="income" type="radio" onClick={radioIncomeHandler} />
+            <input
+              name="option"
+              id="income"
+              type="radio"
+              onClick={radioIncomeHandler} />
           </label>
           <label className="radio-label" htmlFor="expenses">Expenses:
-            <input name="option" id="expenses" type="radio" onClick={radioExpensesHandler} />
+            <input
+              name="option"
+              id="expenses"
+              type="radio"
+              onClick={radioExpensesHandler} />
           </label>
         </div>
         <label htmlFor="name-of-value">Name of value:
@@ -154,17 +166,10 @@ function ExpensesCalculator() {
             value={amountValue}
           />
         </label>
-        <label htmlFor="category">Category:
-          <input name="category" type="text" onChange={categoryValueHandler} />
-        </label>
-        <label htmlFor="">Choose category:
-          <Select
-            radioIncome={radioIncome}
-            incomeList={incomeList}
-            radioExpenses={radioExpenses}
-            expensesList={expensesList}
-          />
-        </label>
+        <Select
+          category={option}
+          categoryValueHandler={categoryValueHandler}
+        />
         <button ref={listHandlerButton} onClick={listHandler}>Add</button>
       </form>
     </div>

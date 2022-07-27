@@ -9,7 +9,7 @@ function ListItem({ textItem,
   setExpensesList,
   category,
   date }) {
-  console.log(value);
+
   const categoryToUpperFirstCase = category[0].toUpperCase() + category.slice(1);
 
   const removeHandler = () => {

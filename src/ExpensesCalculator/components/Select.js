@@ -1,32 +1,25 @@
 import React from "react";
 
-import Option from "./Option";
+function Select({ category, categoryValueHandler }) {
 
-function Select({ radioIncome, incomeList, radioExpenses, expensesList }) {
-
-  if (radioIncome) {
-    return (
-      <select name="category" id="category">
-        {incomeList.map((el, index) => <Option
-          key={index}
-          category={el.category}
-        />
-        )}
+  return (
+    <label htmlFor="">Choose category:
+      <select
+        name="category"
+        id="category"
+        onChange={categoryValueHandler}
+      >
+        {category.map((el, index) => (
+          <option
+            key={index}
+            value={el.value}
+          >
+            {el.value[0].toUpperCase() + el.value.slice(1)}
+          </option>
+        ))}
       </select>
-    )
-  }
-
-  if (radioExpenses) {
-    return (
-      <select name="category" id="category">
-        {expensesList.map((el, index) => <Option
-          key={index}
-          category={el.category}
-        />
-        )}
-      </select>
-    )
-  }
+    </label>
+  )
 }
 
 export default Select;
