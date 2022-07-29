@@ -18,6 +18,7 @@ function ExpensesCalculator() {
   const [radioIncome, setRadioIncome] = useState(false);
   const [radioExpenses, setRadioExpenses] = useState(false);
   const [amountValue, setAmountValue] = useState("");
+  console.log("amountValue", amountValue);
   const [categoryValue, setCategoryValue] = useState("not specified");
   const date = new Date().toLocaleDateString();
 
@@ -35,7 +36,7 @@ function ExpensesCalculator() {
   }
 
   const amountValueHandler = (e) => {
-    setAmountValue(parseInt(e.target.value));
+    setAmountValue(Number(e.target.value));
   }
 
   const radioIncomeHandler = () => {
@@ -89,7 +90,7 @@ function ExpensesCalculator() {
         {
           text: nameOfValue,
           id: Math.random() * 1000,
-          value: parseFloat(amountValue),
+          value: amountValue,
           category: categoryValue
         }
       ]);
@@ -101,7 +102,7 @@ function ExpensesCalculator() {
         {
           text: nameOfValue,
           id: Math.random() * 1000,
-          value: parseFloat(amountValue),
+          value: amountValue,
           category: categoryValue
         }
       ]);
@@ -118,40 +119,44 @@ function ExpensesCalculator() {
       <h1>ExpensesCalculator</h1>
       <div className="wrapper--all-lists">
         <div className="wrapper-list">
-          <h2>Income:</h2>
-          <ol ref={listIncomeRef} className="list-income">
-            {incomeList.map((el, index) => <ListItem
-              key={index}
-              textItem={el.text}
-              idItem={el.id}
-              incomeList={incomeList}
-              setIncomeList={setIncomeList}
-              value={el.value}
-              category={el.category}
-              radioIncome={radioIncome}
-              date={date}
-            />)}
-          </ol>
+          <div>
+            <h2>Income:</h2>
+            <ol ref={listIncomeRef} className="list-income">
+              {incomeList.map((el, index) => <ListItem
+                key={index}
+                textItem={el.text}
+                idItem={el.id}
+                incomeList={incomeList}
+                setIncomeList={setIncomeList}
+                value={el.value}
+                category={el.category}
+                radioIncome={radioIncome}
+                date={date}
+              />)}
+            </ol>
+          </div>
           <SumIncome
             incomeList={incomeList}
           />
         </div>
         <div className="wrapper-list">
-          <h2>Expenses:</h2>
-          <ol ref={listExpensesRef} className="list-expenses">
-            {expensesList.map((el, index) => <ListItem
-              key={index}
-              textItem={el.text}
-              idItem={el.id}
-              expensesList={expensesList}
-              setExpensesList={setExpensesList}
-              value={el.value}
-              category={el.category}
-              radioExpenses={radioExpenses}
-              date={date}
-              setCategoryValue={setCategoryValue}
-            />)}
-          </ol>
+          <div>
+            <h2>Expenses:</h2>
+            <ol ref={listExpensesRef} className="list-expenses">
+              {expensesList.map((el, index) => <ListItem
+                key={index}
+                textItem={el.text}
+                idItem={el.id}
+                expensesList={expensesList}
+                setExpensesList={setExpensesList}
+                value={el.value}
+                category={el.category}
+                radioExpenses={radioExpenses}
+                date={date}
+                setCategoryValue={setCategoryValue}
+              />)}
+            </ol>
+          </div>
           <SumExpenses
             expensesList={expensesList}
           />

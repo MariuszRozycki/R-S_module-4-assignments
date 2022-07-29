@@ -36,7 +36,7 @@ function ListItem({ textItem,
         <div>Value: <span>{value} &euro;</span></div>
         <div>Category: <span>{categoryToUpperFirstCase}</span></div>
         <button className="remove-button" onClick={removeHandler}>
-          Delete
+          X
           <FontAwesomeIcon className="font-awesome" icon={faTrashCan} />
         </button>
       </li>

@@ -58,6 +58,12 @@ label {
   margin-bottom: 20px;
 }
 
+.list-income,
+.list-expenses {
+  display: flex;
+  flex-direction: column;
+}
+
 .form-wrapper input[type="radio"] {
   color: darkred;
 }
@@ -159,7 +165,7 @@ span {
   margin-left: 10px;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 450px) {
   body {
     background-color: steelblue;
   }
