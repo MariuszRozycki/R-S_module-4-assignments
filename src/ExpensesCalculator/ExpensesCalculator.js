@@ -79,7 +79,6 @@ function ExpensesCalculator() {
       errorRadioRef.current.style = "display: none";
     }
 
-
     if (!nameOfValue || !amountValue) {
       return null;
     }
@@ -107,8 +106,11 @@ function ExpensesCalculator() {
         }
       ]);
     }
-    setNameOfValue("");
-    setAmountValue("");
+
+    if ((radioIncome || radioExpenses) && amountValue && nameOfValue) {
+      setNameOfValue("");
+      setAmountValue("");
+    }
   }
 
   return (
