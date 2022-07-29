@@ -162,12 +162,18 @@ span {
 }
 
 @media (max-width: 400px) {
+  body {
+    background-color: steelblue;
+  }
+
   h1 {
     font-size: 22px;
   }
 
   .expenses-calculator {
     margin: 0 auto;
+    border: none;
+    border-radius: none;
   }
 
   .wrapper--all-lists {
