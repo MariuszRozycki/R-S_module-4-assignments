@@ -9,6 +9,7 @@ function Select({ category, categoryValueHandler }) {
         id="category"
         onChange={categoryValueHandler}
       >
+        <option value="">Choose category:</option>
         {category.map((el, index) => (
           <option
             key={index}

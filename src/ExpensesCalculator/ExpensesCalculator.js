@@ -18,7 +18,7 @@ function ExpensesCalculator() {
   const [radioIncome, setRadioIncome] = useState(false);
   const [radioExpenses, setRadioExpenses] = useState(false);
   const [amountValue, setAmountValue] = useState("");
-  const [categoryValue, setCategoryValue] = useState("all category");
+  const [categoryValue, setCategoryValue] = useState("not specified");
   const date = new Date().toLocaleDateString();
 
   const listIncomeRef = useRef();

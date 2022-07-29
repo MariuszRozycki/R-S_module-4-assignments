@@ -1,9 +1,7 @@
 const option = [
-  { value: "all categories" },
   { value: "home" },
   { value: "work" },
-  { value: "entertainment" },
-  { value: "not specified" }
+  { value: "entertainment" }
 ];
 
 export default option;
