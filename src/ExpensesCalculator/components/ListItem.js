@@ -1,5 +1,8 @@
 import React from "react";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+
 function ListItem({ textItem,
   idItem,
   value,
@@ -28,11 +31,14 @@ function ListItem({ textItem,
   return (
     <>
       <li className="list-item">
-        <div>Date: {date}</div>
-        <div>Text value: {textItem}</div>
-        <div>Value: {value} euro</div>
-        <div>Category: {categoryToUpperFirstCase}</div>
-        <button className="remove-button" onClick={removeHandler}>Delete X</button>
+        <div>Date: <span>{date}</span></div>
+        <div>Text value: <span>{textItem}</span></div>
+        <div>Value: <span>{value} &euro;</span></div>
+        <div>Category: <span>{categoryToUpperFirstCase}</span></div>
+        <button className="remove-button" onClick={removeHandler}>
+          Delete
+          <FontAwesomeIcon className="font-awesome" icon={faTrashCan} />
+        </button>
       </li>
     </>
   )

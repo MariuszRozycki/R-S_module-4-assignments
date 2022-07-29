@@ -12,14 +12,14 @@ function SumExpenses({ expensesList }) {
   if (addSumEl() > 0) {
     return (
       <>
-        <p className="sum-expenses balance-minus">Sum expenses: {addSumEl()} euro</p>
+        <p className="sum-expenses balance-minus">Sum expenses: <span>{addSumEl()} &euro;</span></p>
       </>
     )
   }
   else {
     return (
       <>
-        <p className="sum-expenses balance-plus">Sum expenses: {addSumEl()} euro</p>
+        <p className="sum-expenses balance-plus">Sum expenses: <span>{addSumEl()} &euro;</span></p>
       </>
     )
   }

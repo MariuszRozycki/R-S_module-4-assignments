@@ -3,7 +3,7 @@ import React from "react";
 function Select({ category, categoryValueHandler }) {
 
   return (
-    <label htmlFor="">Choose category:
+    <label className="select-label" htmlFor="">Choose category:
       <select
         name="category"
         id="category"
