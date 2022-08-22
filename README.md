@@ -1,3 +1,5 @@
+App address: https://chipper-puppy-778809.netlify.app/
+
 Expenses Calculator - budget app buit in React JS.
 This is one among many small project across React course at React School (pl. Szkola Reacta).
 User can add incomes, expenses. See result of incomes, expenses and balance between them. Currently it's possible to choose category. In the future it will be possible to sort expenses according to categories and store results in local storage.
